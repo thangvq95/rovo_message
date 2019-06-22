@@ -11,11 +11,17 @@ dependencies:
     sdk: flutter
 
   provider:
+  http:
+  json_annotation:
+
   cupertino_icons: ^0.1.2
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  json_serializable:
 
 flutter:
   uses-material-design: true
