@@ -3,12 +3,19 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:rovo_app/provider/app_provider.dart';
 import 'package:rovo_app/resouces/assets.dart';
+import 'package:rovo_app/service_locator.dart';
 import 'configs/routes.dart';
+import 'data/message_repository.dart';
 
-void main() => runApp(ChangeNotifierProvider.value(
-      value: AppProvider(),
-      child: MyApp(),
-    ));
+void main(){
+  // Setup Service Provide
+  setupServiceLocator();
+
+  runApp(ChangeNotifierProvider.value(
+    value: AppProvider(),
+    child: MyApp(),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -67,16 +74,16 @@ class _SplashScreenState extends State<SplashScreen> {
   /// Don't care complete or not => GoTo HomePage
   void initData() {
     loadData().timeout(Duration(seconds: 3)).whenComplete((){
-      // Complete
+      // Complete or timeout
       Navigator.pushReplacementNamed(context, Navigation.HomePage);
-    }).catchError((error){
-      //error
     });
   }
 
   Future loadData() async {
-    await Future.delayed(Duration(seconds: 5)).then((_){
-      print('Load Done');
-    });
+    try{
+      await getIt<MessageRepository>().getMessage();
+    }catch(error){
+      print(error.toString());
+    }
   }
 }

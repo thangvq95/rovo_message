@@ -1,0 +1,9 @@
+
+class Configure{
+  static const BASE_URL = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/";
+  static const MESSAGE_URL = BASE_URL + "536e39a1-1a91-41c6-8326-fccc362cb207/Chats.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45E45B4LN4%2F20190622%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20190622T035818Z&X-Amz-Expires=86400&X-Amz-Security-Token=AgoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJIMEYCIQDF7sEqJJj0ZVQ69E3mdGIt7pUUPWVsARWifyppRC2UyQIhAMswPOuiIWFB73rG%2BE2S4mIO4Gk5UA3EYScPlmiregKsKuMDCLP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMjc0NTY3MTQ5MzcwIgxnnrzRpR86LJ68QdAqtwPX3SxtTiFgsAzizfr5rnvYGbrq9nYRAKo7r6CZOX%2BfaVjA%2BDBY83i0NsESrpKiazWpFC9GkxcoT4x6MVcmyuvKuRUPxDY3vCxRRk%2FcuEBlL0BU%2FsBEL%2Botr6VOe2BGE9eo%2FuQTsyp3i0ddynwBsgJp44WenskMn%2BOYEeqP8HrhLU7BQbUB3LOd3Tjb%2FPaj8uIQw0ScHYkxX1CLXhljxRTEubiLxRv0YR%2F4Ivpya4REsNSU0qhazcydHrWl81EhHOeX9KWu%2FESc7WEcHUn2akPvdi%2BzxeSfPdpiCr8M2FkP17xzRlaDY%2FsEvf3wXRnCIe4lI3vD2fUzporofUKtFKPIMkc4zWg3e77gJVxN3PfQ%2FvdCVa5Fe%2F2v3b771157UfLhh8e3uTyFeUlOqEqLShsBjeDFldfNNL%2BjVHix5bG%2F%2FGhKvZrmlAhupQH%2FtOQVOuxoyGxG7Y2VtLrXVx1cKecAg9EISr2n%2FYG23DU1lcPsNKBkZaRqzNKnh1nJtC8DxWUUujMxhCM9ceDl2DXbBOqntvVjc0XtGV%2BC0zdXpyV9fr9pOOLTtNYeXhgBdCRmD0qu2TywVYvRMKqLtugFOrMBekuU7sZFZ5ukvTHYhZLwO36bUdao%2BR3GBGvX2iK2%2Fat5Q7um8PXe1GmC3G%2Btl9u5j9Ab8WCV8twOSQEsXZucw4y901aSRXPYgJRS%2FppuMc0ZFlpyIw15MLjISvbAe5AfXDyIjnVzdqfWkjjGoc71mOeky9ex8z6J9kTvcs4l4NXeJzCY9F3eTLqGD8IdIDBSEQyKi%2BQyUtXdU0uLdD0oK%2BLM5it6b8YCFqz7bYRrXDlQgpU%3D&X-Amz-Signature=5d8d9fb8451d04ac3b671bb8217f218ba7e6101e53cd41d9326394d09a1a91c7&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Chats.json%22";
+
+  static const MESSAGE_PATH = 'messages';
+  static const ERROR_PATH = 'error';
+  static const ERROR_MESSAGE_PATH = 'error_msg';
+}
