@@ -6,6 +6,12 @@ import 'package:rovo_app/utils/network_util.dart';
 import '../service_locator.dart';
 
 class MessageProvider extends MessageRepository{
+
+  List<Message> _messages = [];
+
+  @override
+  List<Message> messages() => _messages;
+
   @override
   Future<List<Message>> getMessage(){
     return parseJson(Configure.MESSAGE_URL).then((dynamic res){
@@ -16,6 +22,7 @@ class MessageProvider extends MessageRepository{
           list.add(new Message.fromJson(message));
         });
       }
+      this._messages = list;
       return list;
     });
   }
@@ -23,4 +30,6 @@ class MessageProvider extends MessageRepository{
   Future<dynamic> parseJson(String url) async {
     return await getIt<NetworkUtil>().get(url);
   }
+
+
 }

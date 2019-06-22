@@ -10,9 +10,8 @@ import 'data/message_repository.dart';
 void main(){
   // Setup Service Provide
   setupServiceLocator();
-
   runApp(ChangeNotifierProvider.value(
-    value: AppProvider(),
+    value: getIt<AppProvider>(),
     child: MyApp(),
   ));
 }
@@ -20,8 +19,7 @@ void main(){
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-        Provider.of<AppProvider>(context).curTheme.statusBar);
+    SystemChrome.setSystemUIOverlayStyle(getIt<AppProvider>().curTheme.statusBar);
 
     return MaterialApp(
       onGenerateRoute: generateRoutes,
@@ -29,12 +27,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
 //        primarySwatch: Colors.blue,
         fontFamily: 'Rubik',
-        brightness: Provider.of<AppProvider>(context).curTheme.brightness,
-        primaryColor: Provider.of<AppProvider>(context).curTheme.primaryColor,
-        accentColor: Provider.of<AppProvider>(context).curTheme.accentColor,
-        backgroundColor: Provider.of<AppProvider>(context).curTheme.background,
-        dialogBackgroundColor:
-            Provider.of<AppProvider>(context).curTheme.backgroundDialog,
+        brightness: getIt<AppProvider>().curTheme.brightness,
+        primaryColor: getIt<AppProvider>().curTheme.primaryColor,
+        accentColor: getIt<AppProvider>().curTheme.accentColor,
+        backgroundColor: getIt<AppProvider>().curTheme.background,
+        dialogBackgroundColor: getIt<AppProvider>().curTheme.backgroundDialog,
       ),
       home: SplashScreen(),
     );
@@ -63,7 +60,8 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(Assets.logo_text, height: 100, width: 100,),
-            CircularProgressIndicator(strokeWidth: 2.0,)
+            CircularProgressIndicator(strokeWidth: 2.0,valueColor: AlwaysStoppedAnimation<Color>(getIt<AppProvider>().curTheme
+                .accentColor))
           ],
         ),
       ),
@@ -75,13 +73,15 @@ class _SplashScreenState extends State<SplashScreen> {
   void initData() {
     loadData().timeout(Duration(seconds: 3)).whenComplete((){
       // Complete or timeout
-      Navigator.pushReplacementNamed(context, Navigation.HomePage);
+      Navigator.pushReplacementNamed(context, Navigation.MessagePage);
     });
   }
 
   Future loadData() async {
     try{
-      await getIt<MessageRepository>().getMessage();
+      await getIt<MessageRepository>().getMessage().then((_){
+        print(_.toString());
+      });
     }catch(error){
       print(error.toString());
     }

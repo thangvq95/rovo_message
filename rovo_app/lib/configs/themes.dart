@@ -26,7 +26,8 @@ abstract class BaseTheme {
   Color get text;
   Color get text60;
   Color get text30;
-
+  Color get hint;
+  Color get border;
 }
 
 class LightTheme extends BaseTheme {
@@ -41,6 +42,8 @@ class LightTheme extends BaseTheme {
   Color get text => grey.withOpacity(0.9);
   Color get text60 => grey.withOpacity(0.6);
   Color get text30 => grey.withOpacity(0.3);
+  Color get hint => grey.withOpacity(0.3);
+  Color get border => grey.withOpacity(0.3);
 
   SystemUiOverlayStyle statusBar =
   SystemUiOverlayStyle.dark.copyWith(statusBarColor: Colors.transparent);
@@ -58,6 +61,8 @@ class DarkTheme extends BaseTheme {
   Color get text => white.withOpacity(0.9);
   Color get text60 => white.withOpacity(0.6);
   Color get text30 => white.withOpacity(0.3);
+  Color get hint => white.withOpacity(0.3);
+  Color get border => white.withOpacity(0.3);
 
   SystemUiOverlayStyle statusBar =
   SystemUiOverlayStyle.light.copyWith(statusBarColor: Colors.transparent);

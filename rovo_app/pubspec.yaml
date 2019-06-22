@@ -20,6 +20,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  #flutter packages pub run build_runner build
   build_runner:
   json_serializable:
 

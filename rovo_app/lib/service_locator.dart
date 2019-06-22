@@ -8,7 +8,7 @@ import 'data/message_repository.dart';
 GetIt getIt = new GetIt();
 
 void setupServiceLocator() {
-//  getIt.registerLazySingleton<AppProvider>(() => AppProvider());
+  getIt.registerLazySingleton<AppProvider>(() => AppProvider());
   getIt.registerLazySingleton<NetworkUtil>(() => NetworkUtil());
   getIt.registerLazySingleton<MessageRepository>(() => MessageProvider());
 }
