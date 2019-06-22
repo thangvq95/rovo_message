@@ -1,10 +1,18 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:rovo_app/configs/configs.dart';
+import 'package:rovo_app/data/message_repository.dart';
+import 'package:rovo_app/model/content.dart';
+import 'package:rovo_app/model/message.dart';
+import 'package:rovo_app/model/user.dart';
 import 'package:rovo_app/provider/app_provider.dart';
 import 'package:rovo_app/resouces/styles.dart';
-
+import 'package:path/path.dart' as path;
 import '../../app_icons.dart';
 import '../../service_locator.dart';
+import 'package:image_picker/image_picker.dart';
 
 class InputForm extends StatelessWidget {
   final FocusNode focusNode = new FocusNode();
@@ -70,9 +78,42 @@ class InputForm extends StatelessWidget {
     );
   }
 
-  void getImage() {
-    
+  /// Just for demo
+  Future getImage() async {
+    File image = await ImagePicker.pickImage(source: ImageSource.camera);
+    if(image!=null){
+      Message message = new Message(
+        id: getIt<MessageRepository>().messages()[0].id + 1,
+        groupId: getIt<MessageRepository>().messages()[0].groupId,
+        type: MessageType.PHOTO,
+        position: getIt<MessageRepository>().messages()[0].position + 1,
+        content: Content(url:image.path, text: "📷 Photo", subType: 'FROM_DEVICE'),
+        createdAt: DateTime.now(),
+        updateAt: DateTime.now(),
+        senderId: Configure.currentUserId,
+        sender: User(firstName: 'James'),
+      );
+      getIt<MessageRepository>().messages().insert(0, message);
+      //TODO: change state
+      getIt<AppProvider>().notifyListeners();
+    }
   }
 
-  onSendMessage(String text) {}
+  /// Just for demo
+  onSendMessage(String text) {
+    Message message = new Message(
+      id: getIt<MessageRepository>().messages()[0].id + 1,
+      groupId: getIt<MessageRepository>().messages()[0].groupId,
+      type: MessageType.TEXT,
+      position: getIt<MessageRepository>().messages()[0].position + 1,
+      content: Content(text: text),
+      createdAt: DateTime.now(),
+      updateAt: DateTime.now(),
+      senderId: Configure.currentUserId,
+      sender: User(firstName: 'James'),
+    );
+    getIt<MessageRepository>().messages().insert(0, message);
+    //TODO: change state
+    getIt<AppProvider>().notifyListeners();
+  }
 }

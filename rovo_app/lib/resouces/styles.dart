@@ -35,7 +35,7 @@ class AppStyles {
   }
 
   // Text style for name of user
-  static TextStyle textStyleMessageNameItem() {
+  static TextStyle textStyleSubItem() {
     return TextStyle(
       fontSize: AppFontSizes.smallest,
       fontWeight: FontWeight.w300,

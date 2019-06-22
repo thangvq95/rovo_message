@@ -34,11 +34,11 @@ class ItemMessage{
     }
   }
 
-  bool isFirstMessageRight(int index) {
-//    if ((index > 0 && getIt<MessageRepository>().messages() != null && getIt<MessageRepository>().messages()[index - 1].senderId != Configure.currentUserId) || index == 0) {
-//      return true;
-//    } else {
-//      return false;
-//    }
+  bool isNewMemberMessage(int index) {
+    if ((index > 0 && getIt<MessageRepository>().messages() != null && getIt<MessageRepository>().messages()[index].senderId != getIt<MessageRepository>().messages()[index - 1].senderId) || index == 0) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

@@ -14,7 +14,6 @@ class ItemOthers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ItemMessage itemMessage = Provider.of<ItemMessage>(context);
-    MessageType messageType = getMessageType(itemMessage.message.type);
     double maxWidth = MediaQuery.of(context).size.width * 4 / 5;
 
     return Container(
@@ -46,7 +45,7 @@ class ItemOthers extends StatelessWidget {
                 )
               : Container(width: 35.0),
 
-          messageType == MessageType.TEXT
+          itemMessage.message.type == MessageType.TEXT
               ? Flexible(
                   child: Container(
                     child:
@@ -57,7 +56,7 @@ class ItemOthers extends StatelessWidget {
                         if(itemMessage.isDifferentUser(itemMessage.index))
                           Text(
                             itemMessage.message.sender.firstName,
-                            style: AppStyles.textStyleMessageNameItem(),
+                            style: AppStyles.textStyleSubItem(),
                           ),
                         Text(
                           itemMessage.message.content.text,
@@ -72,14 +71,14 @@ class ItemOthers extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8.0)),
                     constraints: new BoxConstraints(maxWidth: maxWidth),
                     margin: EdgeInsets.only(
-                      bottom: 10.0,
-//                        bottom: itemMessage.isLastMessageLeft(itemMessage.index)
-//                            ? 5.0
-//                            : 5.0,
+                      //bottom: 10.0,
+                        bottom: itemMessage.isNewMemberMessage(itemMessage.index)
+                            ? 10.0
+                            : 5.0,
                         left: 10.0),
                   ),
                 )
-              : messageType == MessageType.PHOTO
+              : itemMessage.message.type == MessageType.PHOTO
                   ? Container(
                       child: Material(
                         child: CachedNetworkImage(

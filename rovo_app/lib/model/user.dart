@@ -24,8 +24,8 @@ class User{
   @JsonKey(name: 'status')
   String status;
 
-  User(this.id, this.username, this.name, this.firstName, this.lastName,
-      this.pulseLevel, this.pulsePoints, this.picture, this.city, this.status);
+  User({this.id, this.username, this.name, this.firstName, this.lastName,
+      this.pulseLevel, this.pulsePoints, this.picture, this.city, this.status});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);

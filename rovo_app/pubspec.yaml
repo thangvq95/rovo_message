@@ -15,6 +15,8 @@ dependencies:
   json_annotation:
   get_it:
   cached_network_image:
+  image_picker:
+  intl:
   cupertino_icons: ^0.1.2
 
 

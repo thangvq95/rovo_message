@@ -8,12 +8,12 @@ part of 'content.dart';
 
 Content _$ContentFromJson(Map<String, dynamic> json) {
   return Content(
-      json['url'] as String,
-      json['i18n'] == null
+      url: json['url'] as String,
+      event: json['i18n'] == null
           ? null
           : Event.fromJson(json['i18n'] as Map<String, dynamic>),
-      json['text'] as String,
-      json['subType'] as String);
+      text: json['text'] as String,
+      subType: json['subType'] as String);
 }
 
 Map<String, dynamic> _$ContentToJson(Content instance) => <String, dynamic>{

@@ -7,8 +7,14 @@ part of 'parameter.dart';
 // **************************************************************************
 
 Parameter _$ParameterFromJson(Map<String, dynamic> json) {
-  return Parameter(json['firstName'] as String, json['lng'] as String);
+  return Parameter(
+      firstName: json['firstName'] as String,
+      groupName: json['groupName'] as String,
+      lng: json['lng'] as String);
 }
 
-Map<String, dynamic> _$ParameterToJson(Parameter instance) =>
-    <String, dynamic>{'firstName': instance.firstName, 'lng': instance.lng};
+Map<String, dynamic> _$ParameterToJson(Parameter instance) => <String, dynamic>{
+      'firstName': instance.firstName,
+      'groupName': instance.groupName,
+      'lng': instance.lng
+    };

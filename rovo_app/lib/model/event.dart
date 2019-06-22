@@ -10,7 +10,7 @@ class Event{
   @JsonKey(name: 'parameter')
   Parameter parameter;
 
-  Event(this.key, this.parameter);
+  Event({this.key, this.parameter});
 
   factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
   Map<String, dynamic> toJson() => _$EventToJson(this);

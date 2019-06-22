@@ -28,10 +28,10 @@ class ItemText extends StatelessWidget {
             constraints: new BoxConstraints(
                 maxWidth: maxWidth),
             margin: EdgeInsets.only(
-                bottom: 10.0,
-//                bottom: itemMessage.isLastMessageRight(itemMessage.index)
-//                    ? 15.0
-//                    : 5.0,
+               // bottom: 10.0,
+                bottom: itemMessage.isLastMessageRight(itemMessage.index)
+                    ? 10.0
+                    : 5.0,
                 right: 10.0),
           ),
         )

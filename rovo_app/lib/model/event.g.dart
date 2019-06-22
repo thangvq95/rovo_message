@@ -8,8 +8,8 @@ part of 'event.dart';
 
 Event _$EventFromJson(Map<String, dynamic> json) {
   return Event(
-      json['key'] as String,
-      json['parameter'] == null
+      key: json['key'] as String,
+      parameter: json['parameter'] == null
           ? null
           : Parameter.fromJson(json['parameter'] as Map<String, dynamic>));
 }

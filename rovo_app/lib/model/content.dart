@@ -15,7 +15,7 @@ class Content{
   String subType;
 
 
-  Content(this.url, this.event, this.text, this.subType);
+  Content({this.url, this.event, this.text, this.subType});
 
 //  static Content dataFromJson(Map<String, dynamic> input){
 //    return new Content.fromJson(input);

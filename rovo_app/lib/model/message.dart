@@ -23,8 +23,8 @@ class Message{
   num id;
   @JsonKey(name: 'groupId')
   num groupId;
-  @JsonKey(name: 'type')
-  String type;
+  @JsonKey(name: 'type', fromJson: dataFromJson, toJson: dataToJson)
+  MessageType type;
   @JsonKey(name: 'position')
   int position;
   @JsonKey(name: 'content')
@@ -38,11 +38,21 @@ class Message{
   @JsonKey(name: 'sender')
   User sender;
 
-  Message(this.id, this.groupId, this.type, this.position, this.content,
-      this.createdAt, this.updateAt, this.senderId, this.sender);
+  Message({this.id, this.groupId, this.type, this.position, this.content,
+      this.createdAt, this.updateAt, this.senderId, this.sender});
 
   factory Message.fromJson(Map<String, dynamic> json) => _$MessageFromJson(json);
   Map<String, dynamic> toJson() => _$MessageToJson(this);
+
+
+
+  static MessageType dataFromJson(String input){
+    return getMessageType(input);
+  }
+
+  static String dataToJson(MessageType type){
+    return type.toString();
+  }
 }
 
 
