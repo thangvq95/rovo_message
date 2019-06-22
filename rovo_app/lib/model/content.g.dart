@@ -7,12 +7,16 @@ part of 'content.dart';
 // **************************************************************************
 
 Content _$ContentFromJson(Map<String, dynamic> json) {
-  return Content(Event.dataFromJson(json['event'] as Map<String, dynamic>),
-      json['text'] as String, json['subText'] as String);
+  return Content(
+      json['event'] == null
+          ? null
+          : Event.fromJson(json['event'] as Map<String, dynamic>),
+      json['text'] as String,
+      json['subText'] as String);
 }
 
 Map<String, dynamic> _$ContentToJson(Content instance) => <String, dynamic>{
-      'event': Event.dataToJson(instance.event),
+      'event': instance.event,
       'text': instance.text,
       'subText': instance.subText
     };

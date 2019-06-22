@@ -27,14 +27,6 @@ class User{
   User(this.id, this.username, this.name, this.firstName, this.lastName,
       this.pulseLevel, this.pulsePoints, this.picture, this.city, this.status);
 
-  static User dataFromJson(Map<String, dynamic> input){
-    return new User.fromJson(input);
-  }
-
-  static Map<String, dynamic> dataToJson(User model){
-    return model.toJson();
-  }
-
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
 }

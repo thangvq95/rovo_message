@@ -12,7 +12,9 @@ Message _$MessageFromJson(Map<String, dynamic> json) {
       json['groupId'] as num,
       json['type'] as String,
       json['position'] as int,
-      Content.dataFromJson(json['content'] as Map<String, dynamic>),
+      json['content'] == null
+          ? null
+          : Content.fromJson(json['content'] as Map<String, dynamic>),
       json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
@@ -20,7 +22,9 @@ Message _$MessageFromJson(Map<String, dynamic> json) {
           ? null
           : DateTime.parse(json['updateAt'] as String),
       json['senderId'] as int,
-      User.dataFromJson(json['sender'] as Map<String, dynamic>));
+      json['sender'] == null
+          ? null
+          : User.fromJson(json['sender'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
@@ -28,9 +32,9 @@ Map<String, dynamic> _$MessageToJson(Message instance) => <String, dynamic>{
       'groupId': instance.groupId,
       'type': instance.type,
       'position': instance.position,
-      'content': Content.dataToJson(instance.content),
+      'content': instance.content,
       'createdAt': instance.createdAt?.toIso8601String(),
       'updateAt': instance.updateAt?.toIso8601String(),
       'senderId': instance.senderId,
-      'sender': User.dataToJson(instance.sender)
+      'sender': instance.sender
     };
