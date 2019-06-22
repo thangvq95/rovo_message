@@ -33,6 +33,25 @@ class AppStyles {
       color: getIt<AppProvider>().curTheme.text,
     );
   }
+
+  // Text style for name of user
+  static TextStyle textStyleMessageNameItem() {
+    return TextStyle(
+      fontSize: AppFontSizes.smallest,
+      fontWeight: FontWeight.w300,
+      color: getIt<AppProvider>().curTheme.text60,
+    );
+  }
+
+  // Text style for accent
+  static TextStyle textStyleItemAccent() {
+    return TextStyle(
+      fontSize: AppFontSizes.medium,
+      fontWeight: FontWeight.w400,
+      color: getIt<AppProvider>().curTheme.textAccent,
+    );
+  }
+
 }
 
 

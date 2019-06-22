@@ -42,3 +42,7 @@ flutter:
         - asset: assets/fonts/roboto/Roboto-Regular.ttf
         - asset: assets/fonts/roboto/Roboto-Medium.ttf
         - asset: assets/fonts/roboto/Roboto-Bold.ttf
+    - family: AppIcons
+      fonts:
+        - asset: assets/fonts/AppIcons.ttf
+          weight: 500

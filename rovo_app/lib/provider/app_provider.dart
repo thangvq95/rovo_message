@@ -10,8 +10,10 @@ class AppProvider with ChangeNotifier{
   }
 
   // Change theme
-  void updateTheme(ThemeSetting theme) {
-    curTheme = theme.getTheme();
+  void switchTheme() {
+    curTheme = curTheme.switchTheme();
     notifyListeners();
   }
+
+
 }

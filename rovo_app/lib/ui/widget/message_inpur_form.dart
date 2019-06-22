@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:rovo_app/provider/app_provider.dart';
 import 'package:rovo_app/resouces/styles.dart';
 
+import '../../app_icons.dart';
 import '../../service_locator.dart';
 
 class InputForm extends StatelessWidget {
@@ -26,9 +27,9 @@ class InputForm extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   new Container(
-                    color: Colors.white,
+                    color: getIt<AppProvider>().curTheme.background,
                     child: new IconButton(
-                      icon: new Icon(Icons.camera_alt),
+                      icon: new Icon(AppIcons.camera),
                       onPressed: getImage,
                       color: getIt<AppProvider>().curTheme.primaryColor,
                     ),
@@ -54,10 +55,10 @@ class InputForm extends StatelessWidget {
           ),
           // Button send message
           new Container(
-            color: Colors.white,
+            color: getIt<AppProvider>().curTheme.background,
             margin: new EdgeInsets.symmetric(horizontal: 8.0),
             child: new IconButton(
-              icon: new Icon(Icons.send),
+              icon: new Icon(AppIcons.send),
               onPressed: () => onSendMessage(textEditingController.text),
               color: getIt<AppProvider>().curTheme.primaryColor,
             ),
@@ -69,7 +70,9 @@ class InputForm extends StatelessWidget {
     );
   }
 
-  void getImage() {}
+  void getImage() {
+    
+  }
 
   onSendMessage(String text) {}
 }

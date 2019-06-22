@@ -12,7 +12,12 @@ void main(){
   setupServiceLocator();
   runApp(ChangeNotifierProvider.value(
     value: getIt<AppProvider>(),
-    child: MyApp(),
+    child: Consumer<AppProvider>(
+      builder: (context, value, child){
+        return MyApp();
+      }
+    )
+
   ));
 }
 
@@ -29,7 +34,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Rubik',
         brightness: getIt<AppProvider>().curTheme.brightness,
         primaryColor: getIt<AppProvider>().curTheme.primaryColor,
-        accentColor: getIt<AppProvider>().curTheme.accentColor,
+        accentColor: getIt<AppProvider>().curTheme.cardColor,
         backgroundColor: getIt<AppProvider>().curTheme.background,
         dialogBackgroundColor: getIt<AppProvider>().curTheme.backgroundDialog,
       ),
@@ -61,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: <Widget>[
             Image.asset(Assets.logo_text, height: 100, width: 100,),
             CircularProgressIndicator(strokeWidth: 2.0,valueColor: AlwaysStoppedAnimation<Color>(getIt<AppProvider>().curTheme
-                .accentColor))
+                .cardColor))
           ],
         ),
       ),
@@ -70,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   /// Load init data from Server at SplashScreen
   /// Don't care complete or not => GoTo HomePage
-  void initData() {
+  void initData() async{
     loadData().timeout(Duration(seconds: 3)).whenComplete((){
       // Complete or timeout
       Navigator.pushReplacementNamed(context, Navigation.MessagePage);
@@ -79,9 +84,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future loadData() async {
     try{
-      await getIt<MessageRepository>().getMessage().then((_){
-        print('data: '+_.toString());
-      });
+      /// wait 1s to see Splash Screen. This line just for demo
+      await Future.delayed(Duration(milliseconds: 1500));
+
+      await getIt<MessageRepository>().getMessage();
     }catch(error){
       print(error.toString());
     }

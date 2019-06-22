@@ -14,10 +14,11 @@ class ContentForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: getIt<AppProvider>().curTheme.background,
+      color: getIt<AppProvider>().curTheme.cardBackground,
         child: StreamBuilder(
       stream: null,
       builder: (context, snapshot) {
+
 //        if(snapshot.hasError){
 //          return Center(
 //              child: Text('Opps! Something went wrong!', style: AppStyles.textStyleItem(),));

@@ -1,0 +1,28 @@
+{
+  "name": "AppIcons",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "0d03db7afd4857accf1821efdc8ea72b",
+      "css": "moon",
+      "code": 59393,
+      "src": "entypo"
+    },
+    {
+      "uid": "33e246f3f2079b4119cd414914a96c00",
+      "css": "send",
+      "code": 59392,
+      "src": "material"
+    },
+    {
+      "uid": "aklhk54yg779pgovdsjr9r9w22hej00n",
+      "css": "camera",
+      "code": 59394,
+      "src": "typicons"
+    }
+  ]
+}
