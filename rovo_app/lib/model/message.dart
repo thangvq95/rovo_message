@@ -4,6 +4,19 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'message.g.dart';
 
+enum MessageType {TEXT, PHOTO, SYSTEM}
+
+MessageType getMessageType(String type){
+  switch (type){
+    case 'SYSTEM':
+      return MessageType.SYSTEM;
+    case 'PHOTO':
+      return MessageType.PHOTO;
+    default:
+      return MessageType.TEXT;
+  }
+}
+
 @JsonSerializable()
 class Message{
   @JsonKey(name: 'id')
@@ -31,6 +44,8 @@ class Message{
   factory Message.fromJson(Map<String, dynamic> json) => _$MessageFromJson(json);
   Map<String, dynamic> toJson() => _$MessageToJson(this);
 }
+
+
 
 
 

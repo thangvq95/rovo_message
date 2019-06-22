@@ -1,9 +1,15 @@
 
 class Configure{
-  static const BASE_URL = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/";
-  static const MESSAGE_URL = BASE_URL + "536e39a1-1a91-41c6-8326-fccc362cb207/Chats.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45E45B4LN4%2F20190622%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20190622T035818Z&X-Amz-Expires=86400&X-Amz-Security-Token=AgoJb3JpZ2luX2VjEHoaCXVzLXdlc3QtMiJIMEYCIQDF7sEqJJj0ZVQ69E3mdGIt7pUUPWVsARWifyppRC2UyQIhAMswPOuiIWFB73rG%2BE2S4mIO4Gk5UA3EYScPlmiregKsKuMDCLP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMjc0NTY3MTQ5MzcwIgxnnrzRpR86LJ68QdAqtwPX3SxtTiFgsAzizfr5rnvYGbrq9nYRAKo7r6CZOX%2BfaVjA%2BDBY83i0NsESrpKiazWpFC9GkxcoT4x6MVcmyuvKuRUPxDY3vCxRRk%2FcuEBlL0BU%2FsBEL%2Botr6VOe2BGE9eo%2FuQTsyp3i0ddynwBsgJp44WenskMn%2BOYEeqP8HrhLU7BQbUB3LOd3Tjb%2FPaj8uIQw0ScHYkxX1CLXhljxRTEubiLxRv0YR%2F4Ivpya4REsNSU0qhazcydHrWl81EhHOeX9KWu%2FESc7WEcHUn2akPvdi%2BzxeSfPdpiCr8M2FkP17xzRlaDY%2FsEvf3wXRnCIe4lI3vD2fUzporofUKtFKPIMkc4zWg3e77gJVxN3PfQ%2FvdCVa5Fe%2F2v3b771157UfLhh8e3uTyFeUlOqEqLShsBjeDFldfNNL%2BjVHix5bG%2F%2FGhKvZrmlAhupQH%2FtOQVOuxoyGxG7Y2VtLrXVx1cKecAg9EISr2n%2FYG23DU1lcPsNKBkZaRqzNKnh1nJtC8DxWUUujMxhCM9ceDl2DXbBOqntvVjc0XtGV%2BC0zdXpyV9fr9pOOLTtNYeXhgBdCRmD0qu2TywVYvRMKqLtugFOrMBekuU7sZFZ5ukvTHYhZLwO36bUdao%2BR3GBGvX2iK2%2Fat5Q7um8PXe1GmC3G%2Btl9u5j9Ab8WCV8twOSQEsXZucw4y901aSRXPYgJRS%2FppuMc0ZFlpyIw15MLjISvbAe5AfXDyIjnVzdqfWkjjGoc71mOeky9ex8z6J9kTvcs4l4NXeJzCY9F3eTLqGD8IdIDBSEQyKi%2BQyUtXdU0uLdD0oK%2BLM5it6b8YCFqz7bYRrXDlQgpU%3D&X-Amz-Signature=5d8d9fb8451d04ac3b671bb8217f218ba7e6101e53cd41d9326394d09a1a91c7&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Chats.json%22";
+  static const String MESSAGE_URL = "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/536e39a1-1a91-41c6-8326-fccc362cb207/Chats.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45AQPN2B6U%2F20190622%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20190622T083354Z&X-Amz-Expires=86400&X-Amz-Security-Token=AgoJb3JpZ2luX2VjEID%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQC0uvIDR6cOD300Oo3gbUtudGmXh1fIsxevTQ952yS7CwIhAOjRgJ%2FYhd%2FqTX2uUaT7vQ6tKpXMvDU1f9co4KGg2NqwKuMDCLn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMjc0NTY3MTQ5MzcwIgw07Ntvkg3ANqXpBswqtwNXtu4blANTG0FtJPXMuNBOz8lp5DhpVG69cL5T4luavLbOw2rNuJAgFWrzjxyW32tSSiiK79m2HpNrqEiPID%2FOh9HXSOf4SuB608rBfZH5ParX7O69jJDN2oYVSyIkepf4SZV5NlooIE3nyv1ijM7OxFqexO1LYVicwYmH%2FwnbuuIaz0Z29TmQQz3hC8VtrbI%2BXXOe8HHDvy%2F0Y9Ni%2BC1VcgTLKamRI8Ek%2FezAHvMmd1QtJOwEYlxJs5vzj3ZVQAyCEhy%2B2wMlADxD5nXpKp6dO%2BqP1axeenEsVHN6LNKkF%2F3PyulhqifDVEg7Zcf%2F7n7gXObQA2pl%2ByGawZHx4Z1HOGZPXKSbmGa97SR68nkorBpnqdEPQT8q0aNMX94Hj5maT%2BP6Z22KzQBQNQXpSuiY3kD7dj3VPBWD8dJBWOQeQw%2ByGVOFbu1kQ%2BLmzPVHEbizDfqUpm6NKCuycvg63jXif6M0BuJWIcNtX9Woi47FAAoL7GjWz%2Fh90L1yE1Loosdlwdcaw26lCHkOAt4kySguEyxdwraNXplqivq8ob2Sp5bHi5VBP%2Fn4l8CzdG2jSpWybcFrveiDMIK2t%2BgFOrMBj5L5OhsiLXmhJ1AT14V48VHhHfhqoF23Tno9zKJgnWF%2BlF83VvxhSjoFoVA0e%2FV410hMVLBELTAaVZJ344KzM21iNNPEZL3AmNZeF2ngTA%2BV184HRJUdV9PjzNch6Rfa7D7U8K9%2BMdhKP3piLanfIElgsjVFvb%2BhW6Y6H7xfPnwM9wGkpzvdtjziTywhaS%2B70uTYrtz6Iek5siNGN41nWNep5YlhmJveLNHs%2Bui27VgYM2Y%3D&X-Amz-Signature=baadb79db32996454da47f6cbe039438688eead6b181617c256eb25c28df9260&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Chats.json%22";
 
-  static const MESSAGE_PATH = 'messages';
-  static const ERROR_PATH = 'error';
-  static const ERROR_MESSAGE_PATH = 'error_msg';
+  static const String MESSAGE_PATH = 'messages';
+  static const String ERROR_PATH = 'error';
+  static const String ERROR_MESSAGE_PATH = 'error_msg';
+
+  static int currentUserId = 2;
+  static const int JAMES_ID = 2;
+  static const int JOSHUA_ID = 4;
+  static const int RITESH_ID = 5;
+
+  static const String CHAT_JSON = 'assets/chat.json';
 }

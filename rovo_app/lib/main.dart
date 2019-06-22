@@ -80,7 +80,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Future loadData() async {
     try{
       await getIt<MessageRepository>().getMessage().then((_){
-        print(_.toString());
+        print('data: '+_.toString());
       });
     }catch(error){
       print(error.toString());

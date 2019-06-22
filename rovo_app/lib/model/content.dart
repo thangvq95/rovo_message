@@ -5,15 +5,17 @@ part 'content.g.dart';
 
 @JsonSerializable()
 class Content{
-  @JsonKey(name: 'event')
+  @JsonKey(name: 'url')
+  String url;
+  @JsonKey(name: 'i18n')
   Event event;
   @JsonKey(name: 'text')
   String text;
-  @JsonKey(name: 'subText')
-  String subText;
+  @JsonKey(name: 'subType')
+  String subType;
 
 
-  Content(this.event, this.text, this.subText);
+  Content(this.url, this.event, this.text, this.subType);
 
 //  static Content dataFromJson(Map<String, dynamic> input){
 //    return new Content.fromJson(input);
