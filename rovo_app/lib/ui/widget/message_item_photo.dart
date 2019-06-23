@@ -6,6 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:rovo_app/configs/configs.dart';
 import 'package:rovo_app/constant/constant.dart';
+import 'package:rovo_app/data/message_repository.dart';
 import 'package:rovo_app/model/custom/item_message.dart';
 import 'package:rovo_app/provider/app_provider.dart';
 import 'package:rovo_app/resouces/assets.dart';
@@ -21,56 +22,58 @@ class ItemPhoto extends StatelessWidget {
       children: <Widget>[
         Container(
           child: Material(
-            child:
-                itemMessage.message.content.subType.toString() == Constant.FROM_DEVICE
-                    ? Container(
-                        decoration: BoxDecoration(
-                          color: getIt<AppProvider>().curTheme.border,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
+            child: itemMessage.message.content.subType.toString() ==
+                    Constant.FROM_DEVICE
+                ? Container(
+                    decoration: BoxDecoration(
+                      color: getIt<AppProvider>().curTheme.border,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8.0),
+                      ),
+                    ),
+                    child: Image.file(
+                      File(
+                        itemMessage.message.content.url,
+                      ),
+                      width: 200.0,
+                      height: 200.0,
+                      fit: BoxFit.cover,
+                    ))
+                : CachedNetworkImage(
+                    placeholder: (context, url) => Container(
+                          padding: EdgeInsets.all(50),
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                getIt<AppProvider>().curTheme.primaryColor),
+                          ),
+                          decoration: BoxDecoration(
+                            color: getIt<AppProvider>().curTheme.border,
                           ),
                         ),
-                        child: Image.file(
-                          File(
-                            itemMessage.message.content.url,
-                          ),
+                    errorWidget: (context, url, error) {
+                      return Material(
+                        child: Image.asset(
+                          Assets.logo_text,
                           width: 200.0,
                           height: 200.0,
-                          fit: BoxFit.cover,
-                        ))
-                    : CachedNetworkImage(
-                        placeholder: (context, url) => Container(
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                    getIt<AppProvider>().curTheme.primaryColor),
-                              ),
-                              decoration: BoxDecoration(
-                                color: getIt<AppProvider>().curTheme.border,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(8.0),
-                                ),
-                              ),
-                            ),
-                        errorWidget: (context, url, error) => Material(
-                              child: Image.asset(
-                                Assets.logo_text,
-                                width: 200.0,
-                                height: 200.0,
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8.0),
-                              ),
-                              clipBehavior: Clip.hardEdge,
-                            ),
-                        imageUrl: itemMessage.message.content.url,
-                        width: 200.0,
-                        height: 200.0,
-                        fit: BoxFit.cover,
-                      ),
+                          fit: BoxFit.contain,
+                        ),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                        clipBehavior: Clip.hardEdge,
+                      );
+                    },
+                    imageUrl: itemMessage.message.content.url,
+                    width: 200.0,
+                    height: 200.0,
+                    fit: BoxFit.cover,
+                  ),
             borderRadius: BorderRadius.all(Radius.circular(8.0)),
             clipBehavior: Clip.hardEdge,
           ),
+          width: 200.0,
+          height: 200.0,
           margin: EdgeInsets.only(
               bottom: itemMessage.isLastMessageRight(itemMessage.index)
                   ? 10.0
