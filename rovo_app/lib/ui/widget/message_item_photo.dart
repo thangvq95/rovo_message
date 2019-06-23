@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:rovo_app/configs/configs.dart';
+import 'package:rovo_app/constant/constant.dart';
 import 'package:rovo_app/model/custom/item_message.dart';
 import 'package:rovo_app/provider/app_provider.dart';
 import 'package:rovo_app/resouces/assets.dart';
@@ -20,7 +22,7 @@ class ItemPhoto extends StatelessWidget {
         Container(
           child: Material(
             child:
-                itemMessage.message.content.subType.toString() == 'FROM_DEVICE'
+                itemMessage.message.content.subType.toString() == Constant.FROM_DEVICE
                     ? Container(
                         decoration: BoxDecoration(
                           color: getIt<AppProvider>().curTheme.border,

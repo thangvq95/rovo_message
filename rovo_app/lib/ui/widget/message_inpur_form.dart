@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rovo_app/configs/configs.dart';
+import 'package:rovo_app/constant/constant.dart';
 import 'package:rovo_app/data/message_repository.dart';
 import 'package:rovo_app/model/content.dart';
 import 'package:rovo_app/model/message.dart';
@@ -87,7 +88,7 @@ class InputForm extends StatelessWidget {
         groupId: getIt<MessageRepository>().messages()[0].groupId,
         type: MessageType.PHOTO,
         position: getIt<MessageRepository>().messages()[0].position + 1,
-        content: Content(url:image.path, text: "📷 Photo", subType: 'FROM_DEVICE'),
+        content: Content(url:image.path, text: "📷 Photo", subType: Constant.FROM_DEVICE),
         createdAt: DateTime.now(),
         updateAt: DateTime.now(),
         senderId: Configure.currentUserId,

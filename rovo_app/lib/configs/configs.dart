@@ -12,4 +12,8 @@ class Configure{
   static const int RITESH_ID = 5;
 
   static const String CHAT_JSON = 'assets/chat.json';
+
+
+  /// Share preference
+  static const String LIGHT_THEME_PREFER = 'LightThemePrefer';
 }

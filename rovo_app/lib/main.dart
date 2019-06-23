@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:rovo_app/configs/configs.dart';
+import 'package:rovo_app/configs/themes.dart';
 import 'package:rovo_app/provider/app_provider.dart';
 import 'package:rovo_app/resouces/assets.dart';
 import 'package:rovo_app/service_locator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'configs/routes.dart';
 import 'data/message_repository.dart';
 
@@ -78,18 +81,22 @@ class _SplashScreenState extends State<SplashScreen> {
   void initData() async{
     loadData().timeout(Duration(seconds: 3)).whenComplete((){
       // Complete or timeout
-      Navigator.pushReplacementNamed(context, Navigation.MessagePage);
+      Navigator.pushReplacementNamed(context, Navigation.HomePage);
     });
   }
 
   Future loadData() async {
     try{
       /// wait 1s to see Splash Screen. This line just for demo
+      SharedPreferences.getInstance().then((prefs){
+        if(prefs.getBool(Configure.LIGHT_THEME_PREFER) != null && prefs.getBool(Configure.LIGHT_THEME_PREFER) == false)
+          getIt<AppProvider>().curTheme = DarkTheme();
+      });
       await Future.delayed(Duration(milliseconds: 1500));
 
       await getIt<MessageRepository>().getMessage();
     }catch(error){
-      print(error.toString());
+      //print(error.toString());
     }
   }
 }
