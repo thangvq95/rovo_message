@@ -15,7 +15,6 @@ import 'package:rovo_app/provider/app_provider.dart';
 import 'package:rovo_app/resouces/assets.dart';
 import 'package:rovo_app/resouces/styles.dart';
 import 'package:rovo_app/utils/date_util.dart';
-
 import '../../service_locator.dart';
 
 class ItemPhoto extends StatelessWidget {

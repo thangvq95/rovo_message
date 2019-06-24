@@ -9,16 +9,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Container(
       color: Provider.of<AppProvider>(context).curTheme.background,
-      padding: EdgeInsets.only(top: 100),
+      padding: EdgeInsets.only(top: 80),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Image.asset(Assets.logo_text, width: 200, fit: BoxFit.fitWidth,),
           Container(
             width: width * 2 / 3,
-            height: 200,
+            height: height/5,
             margin: EdgeInsets.only(bottom: 20, top: 20),
             child: PrimaryButton("Demo 1", onPressed: () {
               Navigator.pushNamed(context, Navigation.MessagePage);
@@ -26,7 +27,7 @@ class HomePage extends StatelessWidget {
           ),
           Container(
             width: width * 2 / 3,
-            height: 200,
+            height: height/5,
             margin: EdgeInsets.only(top: 20),
             child: PrimaryButton("Demo 2", onPressed: () {
               Navigator.pushNamed(context, Navigation.AlgorithmPage);

@@ -18,6 +18,7 @@ dependencies:
   image_picker:
   intl:
   shared_preferences:
+  rxdart:
   cupertino_icons: ^0.1.2
 
 

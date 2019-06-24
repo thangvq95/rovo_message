@@ -1,7 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:rovo_app/bloc/chat_bloc.dart';
 import 'package:rovo_app/configs/configs.dart';
 import 'package:rovo_app/constant/constant.dart';
 import 'package:rovo_app/data/message_repository.dart';
@@ -10,7 +11,6 @@ import 'package:rovo_app/model/message.dart';
 import 'package:rovo_app/model/user.dart';
 import 'package:rovo_app/provider/app_provider.dart';
 import 'package:rovo_app/resouces/styles.dart';
-import 'package:path/path.dart' as path;
 import '../../app_icons.dart';
 import '../../service_locator.dart';
 import 'package:image_picker/image_picker.dart';
@@ -39,7 +39,9 @@ class InputForm extends StatelessWidget {
                     color: getIt<AppProvider>().curTheme.background,
                     child: new IconButton(
                       icon: new Icon(AppIcons.camera),
-                      onPressed: getImage,
+                      onPressed: (){
+                        getImage(context);
+                      },
                       color: getIt<AppProvider>().curTheme.primaryColor,
                     ),
                   ),
@@ -68,7 +70,7 @@ class InputForm extends StatelessWidget {
             margin: new EdgeInsets.symmetric(horizontal: 8.0),
             child: new IconButton(
               icon: new Icon(AppIcons.send),
-              onPressed: () => onSendMessage(textEditingController.text),
+              onPressed: () => onSendMessage(context, textEditingController.text),
               color: getIt<AppProvider>().curTheme.primaryColor,
             ),
           ),
@@ -80,7 +82,7 @@ class InputForm extends StatelessWidget {
   }
 
   /// Just for demo
-  Future getImage() async {
+  Future getImage(BuildContext context) async {
     File image = await ImagePicker.pickImage(source: ImageSource.camera);
     if(image!=null){
       Message message = new Message(
@@ -94,14 +96,12 @@ class InputForm extends StatelessWidget {
         senderId: Configure.currentUserId,
         sender: User(firstName: 'James'),
       );
-      getIt<MessageRepository>().messages().insert(0, message);
-      //TODO: change state
-      getIt<AppProvider>().notifyListeners();
+      Provider.of<ChatBloc>(context).addMessage(message);
     }
   }
 
   /// Just for demo
-  onSendMessage(String text) {
+  onSendMessage(BuildContext context, String text) {
     if(text.trim().isNotEmpty){
       Message message = new Message(
         id: getIt<MessageRepository>().messages()[0].id + 1,
@@ -114,9 +114,8 @@ class InputForm extends StatelessWidget {
         senderId: Configure.currentUserId,
         sender: User(firstName: 'James'),
       );
-      getIt<MessageRepository>().messages().insert(0, message);
-      //TODO: change state
-      getIt<AppProvider>().notifyListeners();
+      Provider.of<ChatBloc>(context).addMessage(message);
+      textEditingController.text = '';
     }
   }
 }

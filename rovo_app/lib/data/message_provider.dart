@@ -1,11 +1,8 @@
 import 'dart:convert';
-
 import 'package:rovo_app/configs/configs.dart';
 import 'package:rovo_app/data/message_repository.dart';
 import 'package:rovo_app/model/message.dart';
-import 'package:rovo_app/utils/network_util.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import '../service_locator.dart';
 
 class MessageProvider extends MessageRepository{
 
@@ -35,7 +32,7 @@ class MessageProvider extends MessageRepository{
 //    return await getIt<NetworkUtil>().get(Configure.MESSAGE_URL);
     /// parse from file
     return await loadAsset(Configure.CHAT_JSON).then((response){
-      print(response.toString());
+      //print(response.toString());
       return json.decode(response.toString());
     });
   }
