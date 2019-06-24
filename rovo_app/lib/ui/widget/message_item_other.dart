@@ -7,7 +7,7 @@ import 'package:rovo_app/model/message.dart';
 import 'package:rovo_app/provider/app_provider.dart';
 import 'package:rovo_app/resouces/assets.dart';
 import 'package:rovo_app/resouces/styles.dart';
-
+import 'package:rovo_app/utils/date_util.dart';
 import '../../service_locator.dart';
 
 class ItemOthers extends StatelessWidget {
@@ -27,7 +27,7 @@ class ItemOthers extends StatelessWidget {
                           child: CircularProgressIndicator(
                             strokeWidth: 1.0,
                             valueColor: AlwaysStoppedAnimation<Color>(
-                                getIt<AppProvider>().curTheme.cardColor),
+                                getIt<AppProvider>().curTheme.primaryColor),
                           ),
                           width: 35.0,
                           height: 35.0,
@@ -49,21 +49,32 @@ class ItemOthers extends StatelessWidget {
               ? Flexible(
                   child: Container(
                     child:
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Stack(
                       children: <Widget>[
-                        if(itemMessage.isDifferentUser(itemMessage.index))
-                          Text(
-                            itemMessage.message.sender.firstName,
-                            style: AppStyles.textStyleSubItem(),
-                          ),
-                        Text(
-                          itemMessage.message.content.text,
-                          style: AppStyles.textStyleItem(),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            if(itemMessage.isDifferentUser(itemMessage.index))
+                              Text(
+                                itemMessage.message.sender.firstName,
+                                style: AppStyles.textStyleSubItem(),
+                              ),
+                            Text(
+                              /// \t to handle show time, look like design
+                              itemMessage.message.content.text +"\t\t\t\t\t\t\t\t\t\t",
+                              style: AppStyles.textStyleItem(),
+                            ),
+                          ],
                         ),
+                        Positioned(
+                          bottom: 4,
+                          right: 0,
+                          child: Text(DateUtil.timeFormat(itemMessage.message.createdAt), style: AppStyles.textStyleSubItem(),),
+                        )
                       ],
                     ),
+
 
                     padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
                     decoration: BoxDecoration(
@@ -87,7 +98,7 @@ class ItemOthers extends StatelessWidget {
                                   valueColor: AlwaysStoppedAnimation<Color>(
                                       getIt<AppProvider>()
                                           .curTheme
-                                          .cardColor),
+                                          .primaryColor),
                                 ),
                                 width: 200.0,
                                 height: 200.0,

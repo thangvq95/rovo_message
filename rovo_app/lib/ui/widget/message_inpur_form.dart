@@ -50,7 +50,7 @@ class InputForm extends StatelessWidget {
                         style: AppStyles.textStyleItemInputMessage(),
                         controller: textEditingController,
                         decoration: InputDecoration.collapsed(
-                          hintText: 'Type your message...',
+                          hintText: 'Type message',
                           hintStyle: TextStyle(
                               color: getIt<AppProvider>().curTheme.hint),
                         ),
@@ -102,19 +102,21 @@ class InputForm extends StatelessWidget {
 
   /// Just for demo
   onSendMessage(String text) {
-    Message message = new Message(
-      id: getIt<MessageRepository>().messages()[0].id + 1,
-      groupId: getIt<MessageRepository>().messages()[0].groupId,
-      type: MessageType.TEXT,
-      position: getIt<MessageRepository>().messages()[0].position + 1,
-      content: Content(text: text),
-      createdAt: DateTime.now(),
-      updateAt: DateTime.now(),
-      senderId: Configure.currentUserId,
-      sender: User(firstName: 'James'),
-    );
-    getIt<MessageRepository>().messages().insert(0, message);
-    //TODO: change state
-    getIt<AppProvider>().notifyListeners();
+    if(text.trim().isNotEmpty){
+      Message message = new Message(
+        id: getIt<MessageRepository>().messages()[0].id + 1,
+        groupId: getIt<MessageRepository>().messages()[0].groupId,
+        type: MessageType.TEXT,
+        position: getIt<MessageRepository>().messages()[0].position + 1,
+        content: Content(text: text),
+        createdAt: DateTime.now(),
+        updateAt: DateTime.now(),
+        senderId: Configure.currentUserId,
+        sender: User(firstName: 'James'),
+      );
+      getIt<MessageRepository>().messages().insert(0, message);
+      //TODO: change state
+      getIt<AppProvider>().notifyListeners();
+    }
   }
 }

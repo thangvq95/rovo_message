@@ -33,8 +33,8 @@ class LightTheme extends BaseTheme {
   Color get background => Color(0xFFFFFFFF);
   Color get cardBackground => Color(0xFFEDEFF0);
   Color get backgroundDialog => Color(0xFFFFFFFF);
-  Color get primaryColor => Colors.teal;
-  Color get cardColor => Colors.teal;
+  Color get primaryColor => Color(0xFF36a0a0);
+  Color get cardColor => Color(0xFF20a0a0);
   Color get text => grey.withOpacity(0.9);
   Color get text60 => grey.withOpacity(0.6);
   Color get text30 => grey.withOpacity(0.3);
@@ -62,6 +62,7 @@ class DarkTheme extends BaseTheme {
   Color get textAccent => Color(0x525459).withOpacity(0.9);
   Color get hint => white.withOpacity(0.3);
   Color get border => white.withOpacity(0.3);
+
 
   SystemUiOverlayStyle get statusBar => SystemUiOverlayStyle.light.copyWith(
       statusBarColor: Colors.transparent, systemNavigationBarColor: Colors.transparent);

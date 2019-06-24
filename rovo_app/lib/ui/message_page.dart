@@ -41,6 +41,16 @@ class _StateMessagePage extends State<MessagePage>{
                         getIt<AppProvider>().switchTheme();
                       },
                     ),
+                  ),
+                  Positioned(
+                    left: 10,
+                    child: IconButton(
+                      icon: Icon(Icons.keyboard_backspace),
+                      color: getIt<AppProvider>().curTheme.text,
+                      onPressed: (){
+                        Navigator.of(context).pop();
+                      },
+                    ),
                   )
                 ],
               ),

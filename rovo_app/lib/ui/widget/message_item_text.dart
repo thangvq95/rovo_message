@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:rovo_app/model/custom/item_message.dart';
 import 'package:rovo_app/provider/app_provider.dart';
 import 'package:rovo_app/resouces/styles.dart';
-
+import 'package:rovo_app/utils/date_util.dart';
 import '../../service_locator.dart';
 
 class ItemText extends StatelessWidget {
@@ -16,11 +16,23 @@ class ItemText extends StatelessWidget {
       children: <Widget>[
         Flexible(
           child: Container(
-            child: Text(
-              itemMessage.message.content.text.toString(),
-              style: AppStyles.textStyleItemAccent(),
+            child:
+            Stack(
+              children: <Widget>[
+                Text(
+                  /// \t to handle show time, look like design
+                  itemMessage.message.content.text.toString()+"\t\t\t\t\t\t\t\t\t\t",
+                  style: AppStyles.textStyleItemAccent(),
+                ),
+                Positioned(
+                  bottom: 4,
+                  right: 0,
+                  child: Text(DateUtil.timeFormat(itemMessage.message.createdAt), style: AppStyles.textStyleSubItem(),),
+                )
+              ],
             ),
-            padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+
+            padding: EdgeInsets.fromLTRB(15.0, 10.0, 10.0, 10.0),
             decoration: BoxDecoration(
                 color: getIt<AppProvider>().curTheme.primaryColor,
                 borderRadius: BorderRadius.circular(8.0),
