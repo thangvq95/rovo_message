@@ -27,8 +27,9 @@ class AlgorithmPage extends StatelessWidget {
                     margin:
                     EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     child: CustomTextFormField(
-                      hintText: 'input hour',
+                      hintText: 'input hour (<18)',
                       controller: controller,
+                      keyboardType: TextInputType.number,
                     ),
                   ),
                   PrimaryButton('Composite', onPressed: () {
@@ -65,8 +66,12 @@ class InputHourNotifier with ChangeNotifier {
   void composite(String input) {
     try {
       int number = int.parse(input);
-      result = Algorithm.conductSession1_2(number);
-      notifyListeners();
-    } catch (e) {}
+      if(number<18){
+        result = Algorithm.conductSession1_2(number);
+        notifyListeners();
+      }
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }
